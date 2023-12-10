@@ -1,0 +1,34 @@
+addi $sp, $zero, 8188   # Assume program stack starts at 8188. Do not modify.
+
+# Procedure Main
+Main:
+      # Type your code here.
+      addi $sp, $sp, -12
+      sw $t1, 8($sp)
+      sw $t0, 4($sp)
+      
+      jal Sum
+      lw $t2, 0($sp)
+      lw $t1, 4($sp)
+      lw $t0, 8($sp)
+      jal Dif
+      lw $t3, 0($sp)
+      j End
+
+# Procedure Sum (Do not modify)
+Sum:
+      lw $t0, 8($sp)
+      lw $t1, 4($sp)
+      add $t2, $t0, $t1
+      sw $t2, 0($sp)
+      jr $ra
+
+# Procedure Dif (Do not modify)
+Dif:
+      lw $t0, 8($sp)
+      lw $t1, 4($sp)
+      sub $t2, $t0, $t1
+      sw $t2, 0($sp)
+      jr $ra
+
+End:
